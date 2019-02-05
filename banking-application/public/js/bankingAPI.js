@@ -11,11 +11,11 @@ var url_api_devloper_portal = "https://api.us.apiconnect.ibmcloud.com/spbodieusi
 
 
 // Your API ClientID
-var IBM_CLIENT_ID = "YOUR_CLIENT_ID_HERE";
+var IBM_CLIENT_ID = "95ae4958-1a51-45a2-8b3a-491f80f1f389";
 
 
 // Your API ClientSecret
-var IBM_CLIENT_SECRET = "YOUR_CLIENT_SECRET_HERE";
+var IBM_CLIENT_SECRET = "X5cC2xI8wQ7wL4qD6fQ1mV6iA0cY1oM7dH2rO5kG0nT0eD0vD5";
 
 
 /*
@@ -23,13 +23,13 @@ var IBM_CLIENT_SECRET = "YOUR_CLIENT_SECRET_HERE";
  */
 $(document).ready(function() {
 
-	// Customer Information API
-	$("#btnCustomerContract").click(customerContract);
+    // Customer Information API
+    $("#btnCustomerContract").click(customerContract);
 
-	// Banking Account API
-	$("#btnBalanceInquiry").click(balanceInquiry);
-	$("#btnTransactionsInquiry").click(transactionsInquiry);
-	$("#btnAccountDetail").click(accountDetail);
+    // Banking Account API
+    $("#btnBalanceInquiry").click(balanceInquiry);
+    $("#btnTransactionsInquiry").click(transactionsInquiry);
+    $("#btnAccountDetail").click(accountDetail);
 
 });
 
@@ -45,10 +45,10 @@ $(document).ready(function() {
  */
 function customerInformation(customerID) {
 
-	var path = "/customers/";
-	var data = customerID;
+    var path = "/customers/";
+    var data = customerID;
 
-	doGet(path, data);
+    doGet(path, data);
 }
 
 /**
@@ -59,10 +59,10 @@ function customerInformation(customerID) {
  */
 function customerContract() {
 
-	var path = "/customers/contracts/";
-	var pathParameter = $("#inputCustomerContract").val();
+    var path = "/customers/contracts/";
+    var pathParameter = $("#inputCustomerContract").val();
 
-	doGet(path, pathParameter);
+    doGet(path, pathParameter);
 
 }
 
@@ -77,13 +77,13 @@ function customerContract() {
  */
 function balanceInquiry() {
 
-	var path = "/accounts/";
-	var pathParameter = $("#inputBalanceInquiry").val();
-	var queryParamaeter = "?date=2019-10-10";
+    var path = "/accounts/";
+    var pathParameter = $("#inputBalanceInquiry").val();
+    var queryParamaeter = "?date=2019-10-10";
 
-	var data = pathParameter + queryParamaeter;
+    var data = pathParameter + queryParamaeter;
 
-	doGet(path, data);
+    doGet(path, data);
 
 }
 
@@ -94,10 +94,10 @@ function balanceInquiry() {
  */
 function transactionsInquiry() {
 
-	var path = "/accounts/transactions/";
-	var pathParameter = $("#inputTransactionsInquiry").val();
+    var path = "/accounts/transactions/";
+    var pathParameter = $("#inputTransactionsInquiry").val();
 
-	doGet(path, pathParameter);
+    doGet(path, pathParameter);
 
 }
 
@@ -108,10 +108,10 @@ function transactionsInquiry() {
  */
 function accountDetail() {
 
-	var path = "/accounts/details/";
-	var pathParameter = $("#inputAccountDetail").val();
+    var path = "/accounts/details/";
+    var pathParameter = $("#inputAccountDetail").val();
 
-	doGet(path, pathParameter);
+    doGet(path, pathParameter);
 
 }
 
@@ -131,30 +131,30 @@ function accountDetail() {
  */
 function doGet(path, parameter) {
 
-	$.ajax({
-		type : 'GET',
-		headers : {
-			"x-ibm-client-id" : IBM_CLIENT_ID,
-			"x-ibm-client-secret" : IBM_CLIENT_SECRET
-		},
-		async : true,
-		crossDomain : true,
-		cache : false,
-		url : url_api_devloper_portal + path + parameter,
-		contentType : "application/json",
-		beforeSend: function() { $('#myPleaseWait').modal('show'); },
-		success : function(data) {
-			var jsonPretty = JSON.stringify(data, null, 4);
-			$("#result").text(jsonPretty);
-		},
-		error : function(xhr, status, error) {
-			$("#result").text(xhr.responseText);
-		},
-		complete : function() {
-			$('#myPleaseWait').modal('hide');
-			console.log("complete function GET");
-		}
-       
-	});
+    $.ajax({
+        type: 'GET',
+        headers: {
+            "x-ibm-client-id": IBM_CLIENT_ID,
+            "x-ibm-client-secret": IBM_CLIENT_SECRET
+        },
+        async: true,
+        crossDomain: true,
+        cache: false,
+        url: url_api_devloper_portal + path + parameter,
+        contentType: "application/json",
+        beforeSend: function() { $('#myPleaseWait').modal('show'); },
+        success: function(data) {
+            var jsonPretty = JSON.stringify(data, null, 4);
+            $("#result").text(jsonPretty);
+        },
+        error: function(xhr, status, error) {
+            $("#result").text(xhr.responseText);
+        },
+        complete: function() {
+            $('#myPleaseWait').modal('hide');
+            console.log("complete function GET");
+        }
+
+    });
 
 }
