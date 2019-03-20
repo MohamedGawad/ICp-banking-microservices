@@ -1,0 +1,6 @@
+{
+    "ClientId": "09aaae39e7ed7357760af5c7fa1e2888",
+    "ClientSecret": "gQ8nH5pK6bN8vD4gI1tH6eT4bQ5kI3eV8cH5gL1gV8kF5nD6pO",
+    "url_api_devloper_portal": "https://api.eu-gb.apiconnect.appdomain.cloud/sbm-apps-factory-virtual-agent/sb",
+    "OperationPath": "/accinfovalidation/validateaccinfo"
+}
